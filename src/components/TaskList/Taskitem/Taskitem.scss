@@ -1,0 +1,27 @@
+// FaTimes {
+//   color: "red";
+//   cursor: "pointer";
+// }
+.item-task {
+  background: #c2aeae;
+  margin: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.task-item {
+  border: 4px solid green;
+  background: #c2aeae;
+  margin: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
