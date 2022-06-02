@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
 import "./AddTask.scss";
-
+import { ToastContainer, toast } from "react-toastify";
+import { injectStyle } from "react-toastify/dist/inject-style";
+if (typeof window !== "undefined") {
+  injectStyle();
+}
 export const AddTask = ({onAddTask}) => {
   const [text, setTask] = useState("");
   const [day, setDayTime] = useState("");
@@ -9,11 +13,26 @@ export const AddTask = ({onAddTask}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onAddTask({ text, day, reminder });
-    setTask("");
-    setDayTime("");
+    if(!text)
+    {
+      toast.error('please task name',{
+        position: "top-center",
+        autoClose: 2000
+      });
+    }else{
+      onAddTask({ text, day, reminder });
+      setTask("");
+      setDayTime("");
+      setReminder(false)
+      toast.success('add success',{
+        position: "top-center",
+        autoClose: 2000
+      });
+    }
+    
   };
   return (
+    <>
     <form className="form-add-task" onSubmit={onSubmit}>
       <div className="form-control">
         <label htmlFor="taskName">Task Name</label>
@@ -48,5 +67,7 @@ export const AddTask = ({onAddTask}) => {
       </div>
       <input type="submit" className="btn btn-block" />
     </form>
+    <ToastContainer />
+    </>
   );
 };
